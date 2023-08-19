@@ -19,17 +19,15 @@ function GoogleMapViewer({
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: apiKey!,
+    libraries: ["places"],
   });
 
   const [map, setMap] = useState<google.maps.Map | null>(null);
 
   const onLoad = useCallback(function callback(map: google.maps.Map) {
-    console.log("map.data: ", map.data);
-
     // This is just an example of getting and using the map instance!!! don't just blindly copy!
     // const bounds = new window.google.maps.LatLngBounds(center);
     // map.fitBounds(bounds);
-
     setMap(map);
   }, []);
 

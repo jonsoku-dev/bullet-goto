@@ -74,19 +74,20 @@ export default function Home() {
                 animate={{ y: 0 }}
                 transition={{ duration: 0.4 }}
               >
-                고토
+                Goto
               </motion.p>
               <motion.p
                 initial={{ y: -30 }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.4 }}
               >
-                마모루의
+                Mamoru
               </motion.p>
               <motion.p
                 initial={{ y: -10 }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.5 }}
+                className='mt-2'
               >
                 관점 특강
               </motion.p>
@@ -110,9 +111,12 @@ export default function Home() {
               <div>
                 <p>이사 CHRO</p>
                 <div>
-                  <h3 className="mb-1">
+                  <h3
+                    className="mb-1 underline hover:no-underline cursor-pointer"
+                    onClick={() => openInNewTab("https://bltinc.co.jp/board/")}
+                  >
                     <span className={notoSerifJp.className}>後藤 衛</span>
-                    <span>（Goro Mamoru）</span>
+                    <span>（Goto Mamoru）</span>
                   </h3>
                   <ul className="text-xs text-slate-600">
                     <li>Bullet Group Corporation Director CHRO</li>
@@ -244,7 +248,7 @@ export default function Home() {
                 <ul className="flex flex-col space-y-1">
                   <li className="flex">
                     <Dot className="w-4 h-4" />
-                    자유로운 프리토킹시간
+                    프리토킹시간
                   </li>
                 </ul>
               </div>
