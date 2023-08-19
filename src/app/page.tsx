@@ -4,7 +4,7 @@ import GoogleMapViewer from "@/components/GoogleMapViewer";
 import ScrollAppearDiv from "@/components/ScrollApperDiv";
 import { cn, openInNewTab } from "@/libs/utils";
 import { motion, useScroll } from "framer-motion";
-import { Dot } from "lucide-react";
+import { Dot, Map } from "lucide-react";
 import { Noto_Serif_JP } from "next/font/google";
 import Image from "next/image";
 
@@ -87,7 +87,7 @@ export default function Home() {
                 initial={{ y: -10 }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.5 }}
-                className='mt-2'
+                className="mt-2"
               >
                 관점 특강
               </motion.p>
@@ -183,8 +183,18 @@ export default function Home() {
             </div>
 
             <div className="space-y-4">
-              <h3 className="font-bold text-2xl">장소</h3>
-              <p>Bullet group 도쿄 오피스 4F</p>
+              <div className="flex items-center space-x-1">
+                <h3 className="font-bold text-2xl">장소</h3>
+                <Map
+                  className="w-4 h-4 cursor-pointer"
+                  onClick={() =>
+                    openInNewTab(
+                      "https://www.google.com/maps/place/%E3%80%92160-0022+Tokyo,+Shinjuku+City,+Shinjuku,+5-ch%C5%8Dme%E2%88%9215%E2%88%925+%E6%96%B0%E5%AE%BF%E4%B8%89%E5%85%89%E7%94%BA%E3%83%93%E3%83%AB+4f/@35.693766,139.7046307,17z/data=!3m1!4b1!4m5!3m4!1s0x60188cdc104b9ac3:0x6e6f7801e8784e88!8m2!3d35.693766!4d139.7072056?entry=ttu"
+                    )
+                  }
+                />
+              </div>
+              <p className={cn(notoSerifJp.className, 'text-sm md:text-base')}>東京都新宿区新宿５丁目１５−5 新宿三光町ビル 4F </p>
               <div className="w-[275px] h-[320px] md:w-96 md:h-96">
                 <GoogleMapViewer
                   styles={{
