@@ -2,6 +2,7 @@ import { Nanum_Myeongjo } from "next/font/google";
 import type { Metadata } from "next";
 import "./globals.css";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
+import { Analytics } from '@vercel/analytics/react';
 
 const nanum = Nanum_Myeongjo({
   weight: ["400", "700"],
@@ -43,7 +44,10 @@ export default function RootLayout({
       <head>
         <GoogleAnalytics />
       </head>
-      <body className={nanum.className}>{children}</body>
+      <body className={nanum.className}>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
