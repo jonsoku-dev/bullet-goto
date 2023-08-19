@@ -104,7 +104,7 @@ export default function Home() {
             </motion.h2>
           </div>
 
-          <ScrollAppearDiv className="flex flex-col space-y-16 mb-32 md:flex-row md:space-y-0 md:justify-between">
+          <ScrollAppearDiv className="flex flex-col space-y-32 mb-32 md:flex-row md:space-y-0 md:justify-between">
             <div className="flex flex-col space-y-4">
               <h3 className="font-bold text-2xl">강연자 소개</h3>
               <Image
@@ -127,58 +127,58 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          </ScrollAppearDiv>
 
-          <ScrollAppearDiv className="flex flex-col mb-16 space-y-4">
-            <h3 className="font-bold text-2xl">소속회사 소개</h3>
-            <div className="flex space-x-8">
-              <Image
-                src={"/img/logo_mark.svg"}
-                width={80}
-                height={140}
-                alt="goto"
-              />
-              <div className="flex flex-col space-y-2">
-                <h4>Bullet Group 간이정보</h4>
-                <ul className="text-xs text-slate-600 flex flex-col space-y-1">
-                  <li className="flex">
-                    <Dot className="w-2 h-2" />
-                    설립11年
-                  </li>
-                  <li className="flex">
-                    <Dot className="w-2 h-2" />
-                    작년도 매출 140억
-                  </li>
-                  <li className="flex">
-                    <Dot className="w-2 h-2" />
-                    일본국내 5거점
-                  </li>
-                  <li className="flex">
-                    <Dot className="w-2 h-2" />
-                    종업원 200명(이 중 절반 엔지니어)
-                  </li>
-                  <li className="flex">
-                    <Dot className="w-2 h-2" />
-                    디지털 마케팅과 시스템 개발이 주 사업
-                  </li>
-                </ul>
+            <div className="flex flex-col mb-16 space-y-4">
+              <h3 className="font-bold text-2xl">소속회사 소개</h3>
+              <div className="flex space-x-8">
+                <Image
+                  src={"/img/logo_mark.svg"}
+                  width={80}
+                  height={140}
+                  alt="goto"
+                />
+                <div className="flex flex-col space-y-2">
+                  <h4>Bullet Group 간이정보</h4>
+                  <ul className="text-xs text-slate-600 flex flex-col space-y-1">
+                    <li className="flex">
+                      <Dot className="w-2 h-2" />
+                      설립11年
+                    </li>
+                    <li className="flex">
+                      <Dot className="w-2 h-2" />
+                      작년도 매출 140억
+                    </li>
+                    <li className="flex">
+                      <Dot className="w-2 h-2" />
+                      일본국내 5거점
+                    </li>
+                    <li className="flex">
+                      <Dot className="w-2 h-2" />
+                      종업원 200명(이 중 절반 엔지니어)
+                    </li>
+                    <li className="flex">
+                      <Dot className="w-2 h-2" />
+                      디지털 마케팅과 시스템 개발이 주 사업
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div className="flex justify-end mr-2">
+                <motion.button
+                  initial="initial"
+                  whileHover="hover"
+                  variants={variants}
+                  transition={{ duration: 0.2 }}
+                  className="border border-black rounded-sm px-2 py-1 text-xs transition-colors duration-200 ease-in-out"
+                  onClick={() => openInNewTab("https://bltinc.co.jp/")}
+                >
+                  Official Site
+                </motion.button>
               </div>
             </div>
-            <div className="flex justify-end mr-2">
-              <motion.button
-                initial="initial"
-                whileHover="hover"
-                variants={variants}
-                transition={{ duration: 0.2 }}
-                className="border border-black rounded-sm px-2 py-1 text-xs transition-colors duration-200 ease-in-out"
-                onClick={() => openInNewTab("https://bltinc.co.jp/")}
-              >
-                Official Site
-              </motion.button>
-            </div>
           </ScrollAppearDiv>
 
-          <ScrollAppearDiv className="mb-16 space-y-16">
+          <ScrollAppearDiv className="mb-32 space-y-32">
             <div className="space-y-4">
               <h3 className="font-bold text-2xl">일시</h3>
               <p>2023년 9월 26일(화) 19:30 ~ 21:30</p>
@@ -205,7 +205,7 @@ export default function Home() {
             </div>
           </ScrollAppearDiv>
 
-          <ScrollAppearDiv className="mb-16 space-y-16">
+          <ScrollAppearDiv className="mb-32 space-y-32">
             <div className="space-y-4">
               <h3 className="font-bold text-2xl">대상인원</h3>
               <div>
@@ -281,26 +281,34 @@ export default function Home() {
               <h4 className="text-white mr-4">주최</h4>
               <div className="flex space-x-4 justify-center items-center">
                 <Image
+                  className="cursor-pointer"
                   src={"/img/worldjob_logo.png"}
                   width={130}
                   height={80}
                   alt="world job"
+                  onClick={() => openInNewTab("https://www.worldjob.or.kr/")}
                 />
                 <Image
+                  className="cursor-pointer"
                   src={"/img/tamastudy.svg"}
                   width={100}
                   height={70}
                   alt="Tamastudy"
+                  onClick={() =>
+                    openInNewTab("https://www.instagram.com/tamastudy__tokyo/")
+                  }
                 />
               </div>
             </div>
             <div className={cn("flex items-center")}>
               <h4 className="text-white mr-4">주관</h4>
               <Image
+                className="cursor-pointer"
                 src={"/img/footer_logo.svg"}
                 width={120}
                 height={80}
                 alt="Bullet Group"
+                onClick={() => openInNewTab("https://bltinc.co.jp/")}
               />
             </div>
           </div>
