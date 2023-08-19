@@ -3,9 +3,9 @@
 import GoogleMapViewer from "@/components/GoogleMapViewer";
 import ScrollAppearDiv from "@/components/ScrollApperDiv";
 import { cn, openInNewTab } from "@/libs/utils";
-import { AnimatePresence, motion, useScroll } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 import { Dot } from "lucide-react";
-import { Noto_Sans_KR, Noto_Serif_JP } from "next/font/google";
+import { Noto_Serif_JP } from "next/font/google";
 import Image from "next/image";
 
 const profileVariants = {
@@ -16,12 +16,6 @@ const profileVariants = {
 
 // If loading a variable font, you don't need to specify the font weight
 const notoSerifJp = Noto_Serif_JP({
-  weight: ["400", "700"],
-  preload: true,
-  subsets: ["latin"],
-});
-
-const notoSansKr = Noto_Sans_KR({
   weight: ["400", "700"],
   preload: true,
   subsets: ["latin"],
@@ -257,7 +251,11 @@ export default function Home() {
             </div>
             <div className="space-y-4">
               <h3 className="font-bold text-2xl">신청하기</h3>
-              <button onClick={() => openInNewTab("https://naver.com")}>
+              <button
+                onClick={() =>
+                  openInNewTab("https://forms.gle/WRdKWgjJATVFNrk88")
+                }
+              >
                 <Image
                   src={"/img/google-forms.svg"}
                   width={32}
