@@ -129,7 +129,7 @@ export default function Home() {
             </div>
           </ScrollAppearDiv>
 
-          <ScrollAppearDiv className="flex flex-col space-y-4">
+          <ScrollAppearDiv className="flex flex-col mb-16 space-y-4">
             <h3 className="font-bold text-2xl">소속회사 소개</h3>
             <div className="flex space-x-8">
               <Image
@@ -178,13 +178,13 @@ export default function Home() {
             </div>
           </ScrollAppearDiv>
 
-          <ScrollAppearDiv className="mb-16">
-            <div className="mb-16 space-y-4">
+          <ScrollAppearDiv className="mb-16 space-y-16">
+            <div className="space-y-4">
               <h3 className="font-bold text-2xl">일시</h3>
               <p>2023년 9월 26일(화) 19:30 ~ 21:30</p>
             </div>
 
-            <div className="mb-16 space-y-4">
+            <div className="space-y-4">
               <h3 className="font-bold text-2xl">장소</h3>
               <p>Bullet group 도쿄 오피스 4F</p>
               <div className="w-[275px] h-[320px] md:w-96 md:h-96">
@@ -205,68 +205,68 @@ export default function Home() {
             </div>
           </ScrollAppearDiv>
 
-          <ScrollAppearDiv className="mb-16 space-y-4">
-            <h3 className="font-bold text-2xl">대상인원</h3>
-            <div>
-              <p>
-                일본에서의 외국인 대상 커리어강연 참가희망 인원{" "}
-                <strong>최대 20명</strong>
-              </p>
-              <span className="text-xs text-slate-600">
-                IT직종 관련 혹은 전직희망자 우대
-              </span>
+          <ScrollAppearDiv className="mb-16 space-y-16">
+            <div className="space-y-4">
+              <h3 className="font-bold text-2xl">대상인원</h3>
+              <div>
+                <p>
+                  일본에서의 외국인 대상 커리어강연 참가희망 인원{" "}
+                  <strong>최대 20명</strong>
+                </p>
+                <span className="text-xs text-slate-600">
+                  IT직종 관련 혹은 전직희망자 우대
+                </span>
+              </div>
             </div>
-          </ScrollAppearDiv>
-
-          <ScrollAppearDiv className="mb-16 space-y-4">
-            <h3 className="font-bold text-2xl">세션 내용</h3>
-            <div>
-              <h4 className="font-bold text-xl mb-2">
-                강연자 특강 (19:30~20:30)
-              </h4>
-              <ul className="flex flex-col space-y-1">
-                <li className="flex">
-                  <Dot className="w-4 h-4" />
-                  Bullet Group 소개
-                </li>
-                <li className="flex">
-                  <Dot className="w-4 h-4" />
-                  고토상의 커리어
-                </li>
-                <li className="flex">
-                  <Dot className="w-4 h-4" />
-                  외국인인재가 일본기업에서 확약한 이전 예시와 팁
-                </li>
-                <li className="flex">
-                  <Dot className="w-4 h-4" />
-                  일본기업들이 외국인에게 원하는 인재상이나 역할
-                </li>
-              </ul>
+            <div className="space-y-4">
+              <h3 className="font-bold text-2xl">세션 내용</h3>
+              <div>
+                <h4 className="font-bold text-xl mb-2">
+                  강연자 특강 (19:30~20:30)
+                </h4>
+                <ul className="flex flex-col space-y-1">
+                  <li className="flex">
+                    <Dot className="w-4 h-4" />
+                    Bullet Group 소개
+                  </li>
+                  <li className="flex">
+                    <Dot className="w-4 h-4" />
+                    고토상의 커리어
+                  </li>
+                  <li className="flex">
+                    <Dot className="w-4 h-4" />
+                    외국인인재가 일본기업에서 확약한 이전 예시와 팁
+                  </li>
+                  <li className="flex">
+                    <Dot className="w-4 h-4" />
+                    일본기업들이 외국인에게 원하는 인재상이나 역할
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-xl mb-2">
+                  강연자 및 Bullet Group 한국인 현직자 교류회 (20:30~21:30)
+                </h4>
+                <ul className="flex flex-col space-y-1">
+                  <li className="flex">
+                    <Dot className="w-4 h-4" />
+                    자유로운 프리토킹시간
+                  </li>
+                </ul>
+              </div>
             </div>
-            <div>
-              <h4 className="font-bold text-xl mb-2">
-                강연자 및 Bullet Group 한국인 현직자 교류회 (20:30~21:30)
-              </h4>
-              <ul className="flex flex-col space-y-1">
-                <li className="flex">
-                  <Dot className="w-4 h-4" />
-                  자유로운 프리토킹시간
-                </li>
-              </ul>
+            <div className="space-y-4">
+              <h3 className="font-bold text-2xl">신청하기</h3>
+              <button onClick={() => openInNewTab("https://naver.com")}>
+                <Image
+                  src={"/img/google-forms.svg"}
+                  width={32}
+                  height={32}
+                  alt="google-form"
+                  className="w-12 h-12"
+                />
+              </button>
             </div>
-          </ScrollAppearDiv>
-
-          <ScrollAppearDiv className="mb-16 space-y-4">
-            <h3 className="font-bold text-2xl">신청하기</h3>
-            <button onClick={() => openInNewTab("https://naver.com")}>
-              <Image
-                src={"/img/google-forms.svg"}
-                width={32}
-                height={32}
-                alt="google-form"
-                className="w-12 h-12"
-              />
-            </button>
           </ScrollAppearDiv>
         </div>
 
