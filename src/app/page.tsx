@@ -5,8 +5,13 @@ import ScrollAppearDiv from "@/components/ScrollApperDiv";
 import { cn, openInNewTab } from "@/libs/utils";
 import { motion, useScroll } from "framer-motion";
 import { Dot, Map } from "lucide-react";
+import dynamic from "next/dynamic";
 import { Noto_Serif_JP } from "next/font/google";
 import Image from "next/image";
+
+const CountdownTimer = dynamic(() => import("@/components/CountdownTimer"), {
+  ssr: false,
+});
 
 const profileVariants = {
   hidden: { opacity: 0, y: -50 },
@@ -25,27 +30,43 @@ export default function Home() {
   const { scrollYProgress } = useScroll();
   return (
     <>
-      <main className="">
-        <header className="sticky top-0 bg-fade-bottom w-screen z-50 p-4 pb-8 md:p-8">
-          <Image
-            width={12}
-            height={12}
-            className="w-24 h-12 "
-            src={"/img/top_logo.svg"}
-            alt="logo"
-          />
+      <div className="">
+        <header
+          role="banner"
+          aria-label="Main header"
+          className="sticky top-0 bg-fade-bottom w-screen z-50 p-4 pb-8 md:p-8"
+        >
+          <motion.div
+            className="relative w-[120px] h-[70px]"
+            whileHover={{ scale: [null, 1.2, 1.05] }}
+            transition={{ duration: 0.3 }}
+            role="img"
+            aria-label="Company logo"
+          >
+            <Image fill src={"/img/top_logo.svg"} alt="Company logo" />
+          </motion.div>
+
           <motion.div
             style={{ scaleX: scrollYProgress }}
             className="fixed top-0 left-0 right-0 bg-black h-[4px] z-50 origin-left"
+            role="progressbar"
+            aria-valuenow={scrollYProgress.get() * 100} // Assuming scrollYProgress is a fraction between 0 and 1.
+            aria-label="Page scroll progress"
           />
         </header>
-        <div
+        <main
+          role="main"
+          aria-label="Event Details"
           className={cn(
             "max-w-4xl mx-auto w-full relative grid grid-cols-1 md:gid-cols-2 p-6 md:p-4"
           )}
         >
-          <div className="relative flex flex-col md:flex-row justify-around items-center gap-4 min-h-screen mt-[-100px]">
+          <section
+            aria-labelledby="event-description"
+            className="relative flex flex-col md:flex-row justify-around items-center gap-4 min-h-screen mt-[-100px]"
+          >
             <motion.div
+              id="event-description"
               initial="hidden"
               animate="visible"
               exit="exit"
@@ -59,7 +80,7 @@ export default function Home() {
               소통의 힘으로 혁신적 기회를 찾는 리더 <br />
               고토 마모루가 전하는 진정한 글로벌 인재의 조건과 그만의 관점
             </motion.div>
-            <motion.h2
+            <motion.div
               initial="hidden"
               animate="visible"
               exit="exit"
@@ -69,74 +90,86 @@ export default function Home() {
                 "flex flex-col text-right text-7xl w-full font-bold justify-end items-end"
               )}
             >
-              <motion.p
-                initial={{ y: -50 }}
-                animate={{ y: 0 }}
-                transition={{ duration: 0.4 }}
-              >
-                Goto
-              </motion.p>
-              <motion.p
-                initial={{ y: -30 }}
-                animate={{ y: 0 }}
-                transition={{ duration: 0.4 }}
-              >
-                Mamoru
-              </motion.p>
-              <motion.p
-                initial={{ y: -10 }}
-                animate={{ y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="mt-2"
-              >
-                관점 특강
-              </motion.p>
+              <h1>
+                <motion.p
+                  initial={{ y: -50 }}
+                  animate={{ y: 0 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  Goto
+                </motion.p>
+                <motion.p
+                  initial={{ y: -30 }}
+                  animate={{ y: 0 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  Mamoru
+                </motion.p>
+                <motion.p
+                  initial={{ y: -10 }}
+                  animate={{ y: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="mt-2"
+                >
+                  관점 특강
+                </motion.p>
+              </h1>
               <div className="text-xs mt-4">
                 <strong className="text-sm">일본</strong>에서 활약하고자 하는
                 <br /> <strong className="text-sm">한국인들</strong>에게 전하는
                 진심어린 이야기
               </div>
-            </motion.h2>
-          </div>
+            </motion.div>
+          </section>
 
-          <ScrollAppearDiv className="flex flex-col space-y-32 mb-32 md:flex-row md:space-y-0 md:justify-between">
-            <div className="flex flex-col space-y-4">
-              <h3 className="font-bold text-2xl">강연자 소개</h3>
+          <ScrollAppearDiv
+            aria-labelledby="speaker-introduction"
+            className="flex flex-col space-y-32 mb-32 md:flex-row md:space-y-0 md:justify-between"
+          >
+            <section className="flex flex-col space-y-4">
+              <h2 className="font-bold text-2xl" id="speaker-introduction">
+                강연자 소개
+              </h2>
               <Image
                 src={"/img/goto.jpeg"}
                 width={320}
                 height={180}
-                alt="goto"
+                alt="Goto Profile Picture"
               />
               <div>
                 <p>이사 CHRO</p>
                 <div>
-                  <h3
+                  <h2
                     className="mb-1 underline hover:no-underline cursor-pointer"
                     onClick={() => openInNewTab("https://bltinc.co.jp/board/")}
                   >
                     <span className={notoSerifJp.className}>後藤 衛</span>
                     <span>（Goto Mamoru）</span>
-                  </h3>
-                  <ul className="text-xs text-slate-600">
+                  </h2>
+                  <ul role="list" className="text-xs text-slate-600">
                     <li>Bullet Group Corporation Director CHRO</li>
                     <li>Systems development company company president</li>
                   </ul>
                 </div>
               </div>
-            </div>
+            </section>
 
-            <div className="flex flex-col mb-16 space-y-4">
-              <h3 className="font-bold text-2xl">소속회사 소개</h3>
+            <section
+              aria-labelledby="company-introduction"
+              className="flex flex-col mb-16 space-y-4"
+            >
+              <h2 className="font-bold text-2xl" id="company-introduction">
+                소속회사 소개
+              </h2>
               <div className="flex space-x-8">
                 <Image
                   src={"/img/logo_mark.svg"}
                   width={80}
                   height={140}
-                  alt="goto"
+                  alt="bullet group logo"
                 />
                 <div className="flex flex-col space-y-2">
-                  <h4>Bullet Group 간이정보</h4>
+                  <h3>Bullet Group 간이정보</h3>
                   <ul className="text-xs text-slate-600 flex flex-col space-y-1">
                     <li className="flex">
                       <Dot className="w-2 h-2" />
@@ -169,22 +202,42 @@ export default function Home() {
                   transition={{ duration: 0.2 }}
                   className="border border-black rounded-sm px-2 py-1 text-xs transition-colors duration-200 ease-in-out"
                   onClick={() => openInNewTab("https://bltinc.co.jp/")}
+                  aria-label="Visit Bullet Group Official Site"
                 >
                   Official Site
                 </motion.button>
               </div>
+            </section>
+          </ScrollAppearDiv>
+
+          <ScrollAppearDiv
+            className="mb-32 space-y-32"
+            aria-labelledby="event-date"
+          >
+            <div className="space-y-4">
+              <h2 className="font-bold text-2xl mb-4" id="event-date">
+                일시
+              </h2>
+              <time dateTime="2023-09-26T19:30:00Z">
+                2023년 9월 26일(화) 19:30 ~ 21:30
+              </time>
+              <p className="text-sm text-slate-600">* 19:15부터 접수시작</p>
+              <CountdownTimer
+                targetDate={new Date("2023-09-26T19:30:00Z")}
+                aria-label="Event countdown timer"
+              />
             </div>
           </ScrollAppearDiv>
 
-          <ScrollAppearDiv className="mb-32 space-y-32">
-            <div className="space-y-4">
-              <h3 className="font-bold text-2xl">일시</h3>
-              <p>2023년 9월 26일(화) 19:30 ~ 21:30</p>
-            </div>
-
+          <ScrollAppearDiv
+            className="mb-32 space-y-32"
+            aria-labelledby="event-place"
+          >
             <div className="space-y-4">
               <div className="flex items-center space-x-1">
-                <h3 className="font-bold text-2xl">장소</h3>
+                <h2 className="font-bold text-2xl" id="event-place">
+                  장소
+                </h2>
                 <Map
                   className="w-4 h-4 cursor-pointer"
                   onClick={() =>
@@ -194,7 +247,11 @@ export default function Home() {
                   }
                 />
               </div>
-              <p className={cn(notoSerifJp.className, 'text-sm md:text-base')}>東京都新宿区新宿５丁目１５−5 新宿三光町ビル 4F </p>
+              <address
+                className={cn(notoSerifJp.className, "text-sm md:text-base")}
+              >
+                東京都新宿区新宿５丁目１５−5 新宿三光町ビル 4F{" "}
+              </address>
               <div className="w-[275px] h-[320px] md:w-96 md:h-96">
                 <GoogleMapViewer
                   styles={{
@@ -213,9 +270,14 @@ export default function Home() {
             </div>
           </ScrollAppearDiv>
 
-          <ScrollAppearDiv className="mb-32 space-y-32">
+          <ScrollAppearDiv
+            className="mb-32 space-y-32"
+            aria-labelledby="event-listeners"
+          >
             <div className="space-y-4">
-              <h3 className="font-bold text-2xl">대상인원</h3>
+              <h2 className="font-bold text-2xl" id="event-listeners">
+                대상인원
+              </h2>
               <div>
                 <p>
                   일본에서의 외국인 대상 커리어강연 참가희망 인원{" "}
@@ -226,13 +288,21 @@ export default function Home() {
                 </span>
               </div>
             </div>
+          </ScrollAppearDiv>
+
+          <ScrollAppearDiv
+            className="mb-32 space-y-32"
+            aria-labelledby="event-timetable"
+          >
             <div className="space-y-4">
-              <h3 className="font-bold text-2xl">세션 내용</h3>
+              <h2 className="font-bold text-2xl" id="event-timetable">
+                세션 내용
+              </h2>
               <div>
-                <h4 className="font-bold text-xl mb-2">
+                <h3 className="font-bold text-xl mb-2">
                   강연자 특강 (19:30~20:30)
-                </h4>
-                <ul className="flex flex-col space-y-1">
+                </h3>
+                <ul role="list" className="flex flex-col space-y-1">
                   <li className="flex">
                     <Dot className="w-4 h-4" />
                     Bullet Group 소개
@@ -252,10 +322,10 @@ export default function Home() {
                 </ul>
               </div>
               <div>
-                <h4 className="font-bold text-xl mb-2">
+                <h3 className="font-bold text-xl mb-2">
                   강연자 및 Bullet Group 한국인 현직자 교류회 (20:30~21:30)
-                </h4>
-                <ul className="flex flex-col space-y-1">
+                </h3>
+                <ul role="list" className="flex flex-col space-y-1">
                   <li className="flex">
                     <Dot className="w-4 h-4" />
                     프리토킹시간
@@ -263,41 +333,89 @@ export default function Home() {
                 </ul>
               </div>
             </div>
+          </ScrollAppearDiv>
+
+          <ScrollAppearDiv
+            className="mb-32 space-y-32"
+            aria-labelledby="event-apply"
+          >
             <div className="space-y-4">
-              <h3 className="font-bold text-2xl">신청하기</h3>
-              <button
-                onClick={() =>
-                  openInNewTab("https://forms.gle/WRdKWgjJATVFNrk88")
-                }
-              >
-                <Image
-                  src={"/img/google-forms.svg"}
-                  width={32}
-                  height={32}
-                  alt="google-form"
-                  className="w-12 h-12"
-                />
-              </button>
+              <h2 className="font-bold text-2xl" id="event-apply">
+                신청하기
+              </h2>
+              <div>
+                <button
+                  onClick={() =>
+                    openInNewTab("https://forms.gle/WRdKWgjJATVFNrk88")
+                  }
+                >
+                  <Image
+                    src={"/img/google-forms.svg"}
+                    width={32}
+                    height={32}
+                    alt="google-form"
+                    className="w-12 h-12"
+                  />
+                </button>
+              </div>
+              <p>
+                * <strong>Google Form으로 신청</strong>해주세요.
+              </p>
             </div>
           </ScrollAppearDiv>
-        </div>
+        </main>
 
-        <div className="mt-auto w-screen bg-black">
+        <footer
+          role="contentinfo"
+          aria-label="Footer information"
+          className="mt-auto w-screen bg-black"
+        >
           <div
             className={cn(
               "max-w-4xl mx-auto w-full relative grid grid-cols-1 md:gid-cols-2 p-6 md:p-4",
               "flex flex-col space-y-4 md:space-y-0 md:flex-row md:justify-around "
             )}
           >
-            <div className={cn("flex items-center")}>
-              <h4 className="text-white mr-4">주최</h4>
+            <section
+              className={cn("flex items-center")}
+              aria-labelledby="event-host"
+            >
+              <h2
+                className="text-white mr-4"
+                aria-label="Hosted by"
+                id="event-host"
+              >
+                주최
+              </h2>
+              <Image
+                className="cursor-pointer"
+                src={"/img/footer_logo.svg"}
+                width={120}
+                height={80}
+                alt="Bullet Group logo"
+                aria-label={`Visit Bullet Group Official Site`}
+                onClick={() => openInNewTab("https://bltinc.co.jp/")}
+              />
+            </section>
+            <section
+              className={cn("flex items-center")}
+              aria-labelledby="event-collaboration"
+            >
+              <h2
+                className="text-white mr-4"
+                aria-label="In collaboration with"
+                id="event-collaboration"
+              >
+                협력
+              </h2>
               <div className="flex space-x-4 justify-center items-center">
                 <Image
                   className="cursor-pointer"
                   src={"/img/worldjob_logo.png"}
                   width={130}
                   height={80}
-                  alt="world job"
+                  alt="world job logo"
+                  aria-label={`Visit World Job's Official Site`}
                   onClick={() => openInNewTab("https://www.worldjob.or.kr/")}
                 />
                 <Image
@@ -305,30 +423,20 @@ export default function Home() {
                   src={"/img/tamastudy.svg"}
                   width={100}
                   height={70}
-                  alt="Tamastudy"
+                  alt="tamastudy logo"
+                  aria-label={`Visit tamastudy official instagram page`}
                   onClick={() =>
                     openInNewTab("https://www.instagram.com/tamastudy__tokyo/")
                   }
                 />
               </div>
-            </div>
-            <div className={cn("flex items-center")}>
-              <h4 className="text-white mr-4">주관</h4>
-              <Image
-                className="cursor-pointer"
-                src={"/img/footer_logo.svg"}
-                width={120}
-                height={80}
-                alt="Bullet Group"
-                onClick={() => openInNewTab("https://bltinc.co.jp/")}
-              />
-            </div>
+            </section>
           </div>
           <p className="text-center py-4 text-white text-xs">
             &copy; {new Date().getFullYear()} Tamstudy. All rights reserved.
           </p>
-        </div>
-      </main>
+        </footer>
+      </div>
     </>
   );
 }

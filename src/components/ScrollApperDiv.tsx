@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
-import { motion, useAnimation } from "framer-motion";
+import { HTMLMotionProps, motion, useAnimation } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
-interface ScrollAppearDivProps {
+interface ScrollAppearDivProps extends HTMLMotionProps<"section"> {
   children: React.ReactNode;
   className?: string;
 }
@@ -11,6 +11,7 @@ interface ScrollAppearDivProps {
 const ScrollAppearDiv: React.FC<ScrollAppearDivProps> = ({
   children,
   className,
+  ...restProps
 }) => {
   const controls = useAnimation();
   const [scrolled, setScrolled] = useState<boolean>(false);
@@ -24,7 +25,7 @@ const ScrollAppearDiv: React.FC<ScrollAppearDivProps> = ({
       if (!target) return;
 
       const topPosition = target.offsetTop;
-      const triggerPosition = topPosition + target.offsetHeight * 0.3; // This is where 70% of the target div is scrolled into view
+      const triggerPosition = topPosition + target.offsetHeight * -1.5;
 
       if (window.scrollY > triggerPosition && !scrolled) {
         setScrolled(true);
@@ -44,15 +45,16 @@ const ScrollAppearDiv: React.FC<ScrollAppearDivProps> = ({
   }, [scrolled, controls, ref]);
 
   return (
-    <motion.div
+    <motion.section
       ref={ref}
       initial={{ opacity: 0, y: -40 }}
       animate={controls}
       transition={{ duration: 0.6 }}
       className={className}
+      {...restProps}
     >
       {children}
-    </motion.div>
+    </motion.section>
   );
 };
 
