@@ -183,7 +183,7 @@ export default function Home() {
                     </li>
                     <li className="flex">
                       <Dot className="w-2 h-2" />
-                      작년도 매출 140억
+                      작년도 매출 140억엔
                     </li>
                     <li className="flex">
                       <Dot className="w-2 h-2" />
