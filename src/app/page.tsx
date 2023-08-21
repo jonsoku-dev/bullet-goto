@@ -43,7 +43,7 @@ export default function Home() {
             role="img"
             aria-label="Company logo"
           >
-            <Image fill src={"/img/top_logo.svg"} alt="Company logo" />
+            <Image fill src={"/img/top_logo.svg"} alt="Company logo" priority />
           </motion.div>
 
           <motion.div
@@ -145,7 +145,11 @@ export default function Home() {
                     className="mb-1 underline hover:no-underline cursor-pointer"
                     href="https://bltinc.co.jp/board/"
                   >
-                    <strong className={cn(notoSerifJp.className, 'font-normal')}>後藤 衛</strong>
+                    <strong
+                      className={cn(notoSerifJp.className, "font-normal")}
+                    >
+                      後藤 衛
+                    </strong>
                     <span>（Goto Mamoru）</span>
                   </a>
                   <ul role="list" className="text-xs text-slate-600">
