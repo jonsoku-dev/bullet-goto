@@ -131,7 +131,7 @@ export default function Home() {
                 강연자 소개
               </h2>
               <Image
-                src={"/img/goto.jpeg"}
+                src={"/img/goto.png"}
                 width={320}
                 height={180}
                 alt="Goto Profile Picture"
