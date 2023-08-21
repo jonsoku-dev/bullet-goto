@@ -34,7 +34,7 @@ export default function Home() {
         <header
           role="banner"
           aria-label="Main header"
-          className="sticky top-0 bg-fade-bottom w-screen z-50 p-4 pb-8 md:p-8"
+          className="sticky top-0 bg-fade-bottom w-full z-50 p-4 pb-8 md:p-8"
         >
           <motion.div
             className="relative w-[120px] h-[70px]"
