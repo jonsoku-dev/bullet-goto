@@ -139,13 +139,15 @@ export default function Home() {
               <div>
                 <p>이사 CHRO</p>
                 <div>
-                  <h2
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="mb-1 underline hover:no-underline cursor-pointer"
-                    onClick={() => openInNewTab("https://bltinc.co.jp/board/")}
+                    href="https://bltinc.co.jp/board/"
                   >
-                    <span className={notoSerifJp.className}>後藤 衛</span>
+                    <strong className={cn(notoSerifJp.className, 'font-normal')}>後藤 衛</strong>
                     <span>（Goto Mamoru）</span>
-                  </h2>
+                  </a>
                   <ul role="list" className="text-xs text-slate-600">
                     <li>Bullet Group Corporation Director CHRO</li>
                     <li>Systems development company company president</li>
