@@ -350,16 +350,19 @@ export default function Home() {
                   }
                 >
                   <Image
-                    src={"/img/google-forms.svg"}
-                    width={32}
-                    height={32}
-                    alt="google-form"
-                    className="w-12 h-12"
+                    src={"/img/bullet-qr.svg"}
+                    width={120}
+                    height={120}
+                    alt="google-form-qr"
+                    className="w-64 h-64"
                   />
                 </button>
               </div>
               <p>
-                * <strong>Google Form으로 신청</strong>해주세요.
+                * PC: <strong>클릭</strong>하시면 해당 페이지로 이동합니다.
+              </p>
+              <p>
+                * MOBILE: <strong>스캔</strong>하시면 해당 페이지로 이동합니다.
               </p>
             </div>
           </ScrollAppearDiv>
