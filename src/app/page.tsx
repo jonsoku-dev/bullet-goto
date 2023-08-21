@@ -371,7 +371,7 @@ export default function Home() {
         <footer
           role="contentinfo"
           aria-label="Footer information"
-          className="mt-auto w-screen bg-black"
+          className="mt-auto w-full bg-black"
         >
           <div
             className={cn(
