@@ -356,7 +356,7 @@ export default function Home() {
                   }
                 >
                   <Image
-                    src={"/img/bullet-qr.svg"}
+                    src={"/img/bullet-qr.png"}
                     width={120}
                     height={120}
                     alt="google-form-qr"
