@@ -229,7 +229,7 @@ export default function Home() {
               </time>
               <p className="text-sm text-slate-600">* 19:15부터 접수시작</p>
               <CountdownTimer
-                targetDate={new Date("2023-09-26T19:30:00Z")}
+                targetDate={new Date("2023-09-26T12:30:00Z")}
                 aria-label="Event countdown timer"
               />
             </div>
